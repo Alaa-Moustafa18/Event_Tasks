@@ -1,0 +1,20 @@
+.event-form {
+  text-transform: capitalize;
+}
+.mat-form-field {
+  width: 100%;
+}
+.delete-task {
+  color: red;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.mat-flat-button.mat-primary,
+.mat-raised-button.mat-primary,
+.mat-fab.mat-primary,
+.mat-mini-fab.mat-primary {
+  background-color: #26a3c4;
+  text-transform: capitalize;
+}

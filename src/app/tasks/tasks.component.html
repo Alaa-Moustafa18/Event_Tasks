@@ -1,0 +1,52 @@
+<div class="tasks-page-header">
+  <h1>My Tasks</h1>
+  <button mat-button (click)="addNewEvent()">
+    <mat-icon>add</mat-icon><span> Add new event</span>
+  </button>
+</div>
+
+<ng-container *ngIf="events">
+  <div class="row">
+    <div *ngFor="let event of events" class="col-md-4">
+      <div class="event-title">
+        <h2>{{ event?.name }}</h2>
+        <img
+          src="../../assets/images/Icon feather-edit.png"
+          (click)="editEvent(event)"
+          alt="edit"
+        />
+      </div>
+      <p class="tasks">Tasks:</p>
+      <div class="task-content" *ngFor="let task of event.tasks">
+        <mat-card
+          [ngClass]="{
+            'high-priority': task.priority === 'high',
+            'medium-priority': task.priority === 'medium',
+            'low-priority': task.priority === 'low'
+          }"
+        >
+          <mat-card-title>{{ task.name }}</mat-card-title>
+          <mat-card-content>
+            <p>
+              start Date: {{ task.startDate.toDate() | date: "dd MMM, h:mm a" }}
+            </p>
+            <p>
+              end Date: {{ task.endDate.toDate() | date: "dd MMM, h:mm a" }}
+            </p>
+            <p>
+              priority:
+              <span
+                [ngClass]="{
+                  'high-priority': task.priority === 'high',
+                  'medium-priority': task.priority === 'medium',
+                  'low-priority': task.priority === 'low'
+                }"
+                >{{ task.priority }}
+              </span>
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</ng-container>

@@ -1,0 +1,60 @@
+$highColor: #d95f5f;
+$mediumColor: #5fd978;
+$lowColor: #dbdb50;
+
+.tasks-page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  h2 {
+    margin: 0;
+  }
+}
+.event-title {
+  background-color: #7bdebd;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  align-items: center;
+  border-radius: 5px;
+  h2 {
+    margin: 0;
+  }
+  img {
+    cursor: pointer;
+  }
+}
+p.tasks {
+  font-weight: 500;
+  font-size: 20px;
+  margin: 1.5rem 0;
+}
+.mat-card-title {
+  color: #7e7878;
+  font-size: 22px;
+}
+
+mat-card {
+  border-radius: 0;
+  margin-bottom: 4rem;
+  &.high-priority {
+    border-left: 4px solid $highColor;
+  }
+  &.medium-priority {
+    border-left: 4px solid $mediumColor;
+  }
+  &.low-priority {
+    border-left: 4px solid $lowColor;
+  }
+}
+.mat-card-content {
+  .high-priority {
+    color: $highColor;
+  }
+  .medium-priority {
+    color: $mediumColor;
+  }
+  .low-priority {
+    color: $lowColor;
+  }
+}
