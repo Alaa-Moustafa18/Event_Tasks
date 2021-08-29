@@ -10,6 +10,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 const matrialComponents = [
   MatToolbarModule,
@@ -22,10 +24,11 @@ const matrialComponents = [
   MatDatepickerModule,
   MatNativeDateModule,
   MatSelectModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
 ];
 
 @NgModule({
-  declarations: [],
   imports: [CommonModule, matrialComponents],
   exports: [matrialComponents],
 })

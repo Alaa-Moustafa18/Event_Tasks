@@ -1,6 +1,17 @@
+<div *ngIf="errorMsg" class="alert alert-danger">
+  <h1>An error Occured</h1>
+  <p>{{ errorMsg }}</p>
+</div>
+<div class="flex flex-center">
+  <mat-progress-spinner
+    *ngIf="showSpinner"
+    color="primary"
+    mode="indeterminate"
+  ></mat-progress-spinner>
+</div>
 <div class="tasks-page-header">
   <h1>My Tasks</h1>
-  <button mat-button (click)="addNewEvent()">
+  <button mat-button routerLink="events/addEvent">
     <mat-icon>add</mat-icon><span> Add new event</span>
   </button>
 </div>
@@ -27,12 +38,8 @@
         >
           <mat-card-title>{{ task.name }}</mat-card-title>
           <mat-card-content>
-            <p>
-              start Date: {{ task.startDate.toDate() | date: "dd MMM, h:mm a" }}
-            </p>
-            <p>
-              end Date: {{ task.endDate.toDate() | date: "dd MMM, h:mm a" }}
-            </p>
+            <p>start Date: {{ task.startDate | date: "dd MMM, h:mm a" }}</p>
+            <p>end Date: {{ task.endDate | date: "dd MMM, h:mm a" }}</p>
             <p>
               priority:
               <span

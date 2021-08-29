@@ -7,10 +7,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './header/header.component';
 import { MaterialModule } from './shared/material/material/material.module';
 import { TasksComponent } from './tasks/tasks.component';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,16 +24,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    AngularFireModule.initializeApp({
-      apiKey: 'AIzaSyBFSGlEQYVclyndU0uOKNpIhfdVicxHN4Y',
-      authDomain: 'events-b8a1e.firebaseapp.com',
-      projectId: 'events-b8a1e',
-      storageBucket: 'events-b8a1e.appspot.com',
-      messagingSenderId: '301443010341',
-      appId: '1:301443010341:web:1f88c8347a4ce5d375d4cc',
-      measurementId: 'G-LJHWNRJTCV',
-    }),
-    AngularFirestoreModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -1,4 +1,9 @@
 <div class="event-form">
+  <div *ngIf="errorMsg" class="alert alert-danger">
+    <h1>An error Occured</h1>
+    <p>{{ errorMsg }}</p>
+  </div>
+
   <div class="offset-md-3 col-md-6">
     <mat-card>
       <mat-card-title>event details</mat-card-title>
@@ -14,9 +19,13 @@
                   matInput
                   placeholder="event name"
                 />
-                <!-- <mat-error *ngIf="name.touched && name.invalid"
+                <mat-error
+                  *ngIf="
+                    eventForm.get('eventDetails')?.get('name')?.touched &&
+                    eventForm.get('eventDetails')?.get('name')?.errors?.required
+                  "
                   >name is required</mat-error
-                > -->
+                >
               </mat-form-field>
             </div>
             <div class="col-12">
@@ -32,9 +41,14 @@
                   [for]="dueDatepicker"
                 ></mat-datepicker-toggle>
                 <mat-datepicker #dueDatepicker></mat-datepicker>
-                <!-- <mat-error *ngIf="dueDate.touched && dueDate.invalid"
-                  >due Date is required</mat-error
-                > -->
+                <mat-error
+                  *ngIf="
+                    eventForm.get('eventDetails')?.get('dueDate')?.touched &&
+                    eventForm.get('eventDetails')?.get('dueDate')?.errors
+                      ?.required
+                  "
+                  >due date is required</mat-error
+                >
               </mat-form-field>
             </div>
           </div>
@@ -49,9 +63,13 @@
                   <mat-form-field appearance="outline">
                     <mat-label>task name</mat-label>
                     <input formControlName="name" matInput placeholder="name" />
-                    <!-- <mat-error *ngIf="name.touched && name.invalid"
+                    <mat-error
+                      *ngIf="
+                        task.get('name')?.touched &&
+                        task.get('name')?.errors?.required
+                      "
                       >task name is required</mat-error
-                    > -->
+                    >
                   </mat-form-field>
                 </div>
                 <div class="col-12">
@@ -63,17 +81,21 @@
                           matInput
                           formControlName="startDate"
                           [matDatepicker]="startDatePicker"
+                          (dateInput)="minDate = $event.value"
                         />
+
                         <mat-datepicker-toggle
                           matSuffix
                           [for]="startDatePicker"
                         ></mat-datepicker-toggle>
                         <mat-datepicker #startDatePicker></mat-datepicker>
-                        <!-- <mat-error
-                          *ngIf="startDate.touched && startDate.invalid"
+                        <mat-error
+                          *ngIf="
+                            task.get('startDate')?.touched &&
+                            task.get('startDate')?.errors?.required
+                          "
+                          >start Date is required</mat-error
                         >
-                          start Date is required</mat-error
-                        > -->
                       </mat-form-field>
                     </div>
                     <div class="col-6">
@@ -83,15 +105,30 @@
                           matInput
                           formControlName="endDate"
                           [matDatepicker]="endDatePicker"
+                          [min]="minDate"
                         />
                         <mat-datepicker-toggle
                           matSuffix
                           [for]="endDatePicker"
                         ></mat-datepicker-toggle>
                         <mat-datepicker #endDatePicker></mat-datepicker>
-                        <!-- <mat-error *ngIf="endDate.touched && endDate.required">
-                          End Date is required</mat-error
-                        > -->
+
+                        <mat-error
+                          *ngIf="
+                            task.get('endDate')?.touched &&
+                            task.get('endDate')?.errors?.required
+                          "
+                        >
+                          end Date is required</mat-error
+                        >
+                        <mat-error
+                          *ngIf="
+                            task.get('endDate')?.touched &&
+                            task.get('endDate')?.errors?.matDatepickerMin
+                          "
+                        >
+                          please select a valid end date</mat-error
+                        >
                       </mat-form-field>
                     </div>
                   </div>
@@ -108,12 +145,22 @@
                       <option value="medium">medium</option>
                       <option value="low">low</option>
                     </select>
-                    <!-- <mat-error *ngIf="priority.touched && priority.required">
-                      priority is required</mat-error> -->
+                    <mat-error
+                      *ngIf="
+                        task.get('priority')?.touched &&
+                        task.get('priority')?.errors?.required
+                      "
+                    >
+                      priority is required</mat-error
+                    >
                   </mat-form-field>
                 </div>
                 <div class="delete-task">
-                  <button mat-button (click)="deleteTask(taskIndex)">
+                  <button
+                    mat-button
+                    type="button"
+                    (click)="deleteTask(taskIndex)"
+                  >
                     <mat-icon>delete_outline</mat-icon
                     ><span> delete this Task</span>
                   </button>
@@ -138,7 +185,12 @@
               </button>
             </div>
             <div class="save-btn">
-              <button mat-raised-button (click)="save()" color="primary">
+              <button
+                mat-raised-button
+                [disabled]="eventForm.invalid"
+                (click)="save()"
+                color="primary"
+              >
                 save
               </button>
             </div>

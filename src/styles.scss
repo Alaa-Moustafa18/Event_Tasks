@@ -16,3 +16,24 @@ $greenColor: #7bdebd;
 $highColor: #d95f5f;
 $mediumColor: #5fd978;
 $lowColor: #dbdb50;
+
+.alert-danger {
+  background-color: #f44336; /* Red */
+}
+.alert-success {
+  background-color: #36f456;
+}
+.alert {
+  padding: 20px;
+  color: white;
+  margin-bottom: 15px;
+  text-align: center;
+}
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}

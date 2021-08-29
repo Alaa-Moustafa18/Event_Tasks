@@ -1,15 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { eventModel } from './models/eventModel.model';
+import { EventResolver } from './guards/event.resolver';
 import { TaskFormComponent } from './task-form/task-form.component';
 import { TasksComponent } from './tasks/tasks.component';
 
 const routes: Routes = [
-  { path: '', component: TasksComponent },
-  { path: 'addEvent', component: TaskFormComponent },
   {
-    path: 'edit/:id',
+    path: 'events',
+    component: TasksComponent,
+  },
+
+  { path: 'events/addEvent', component: TaskFormComponent },
+  {
+    path: 'events/:id/edit',
     component: TaskFormComponent,
+    resolve: { currentvent: EventResolver },
   },
   { path: '**', component: TasksComponent },
 ];
