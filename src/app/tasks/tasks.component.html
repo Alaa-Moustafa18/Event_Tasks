@@ -1,5 +1,5 @@
 <div *ngIf="errorMsg" class="alert alert-danger">
-  <h1>An error Occured</h1>
+  <h1>{{ "ERROR_MSG" | translate }}</h1>
   <p>{{ errorMsg }}</p>
 </div>
 <div class="flex flex-center">
@@ -10,9 +10,9 @@
   ></mat-progress-spinner>
 </div>
 <div class="tasks-page-header">
-  <h1>My Tasks</h1>
+  <h1>{{ "MYTASKS" | translate }}</h1>
   <button mat-button routerLink="events/addEvent">
-    <mat-icon>add</mat-icon><span> Add new event</span>
+    <mat-icon>add</mat-icon><span> {{ "ADD_NEW_EVENT" | translate }}</span>
   </button>
 </div>
 
@@ -24,10 +24,11 @@
         <img
           src="../../assets/images/Icon feather-edit.png"
           (click)="editEvent(event)"
+          [matTooltip]="'EDIT_TASK' | translate"
           alt="edit"
         />
       </div>
-      <p class="tasks">Tasks:</p>
+      <p class="tasks">{{ "Tasks" | translate }}</p>
       <div class="task-content" *ngFor="let task of event.tasks">
         <mat-card
           [ngClass]="{
@@ -38,10 +39,16 @@
         >
           <mat-card-title>{{ task.name }}</mat-card-title>
           <mat-card-content>
-            <p>start Date: {{ task.startDate | date: "dd MMM, h:mm a" }}</p>
-            <p>end Date: {{ task.endDate | date: "dd MMM, h:mm a" }}</p>
             <p>
-              priority:
+              {{ "START_DATE" | translate }}:
+              {{ task.startDate | date: "dd MMM, h:mm a" }}
+            </p>
+            <p>
+              {{ "END_DATE" | translate }}:
+              {{ task.endDate | date: "dd MMM, h:mm a" }}
+            </p>
+            <p>
+              {{ "PRIORITY" | translate }}:
               <span
                 [ngClass]="{
                   'high-priority': task.priority === 'high',

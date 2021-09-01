@@ -1,9 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Event } from '../models/event.model';
 import { EventService } from '../services/event.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslateService } from '@ngx-translate/core';
+import { EventValidators } from '../shared/async.validators';
+import { uniqueTaskName } from '../shared/unique.validators';
+
 @Component({
   selector: 'app-task-form',
   templateUrl: './task-form.component.html',
@@ -15,13 +19,14 @@ export class TaskFormComponent implements OnInit {
   currentEvent: Event = {};
   editMode: boolean = false;
   errorMsg = '';
-  minDate;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private fb: FormBuilder,
     private eventService: EventService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    public translate: TranslateService,
+    private eventValidators: EventValidators
   ) {}
 
   ngOnInit(): void {
@@ -40,12 +45,12 @@ export class TaskFormComponent implements OnInit {
   createForm() {
     let eventName = this.currentEvent.name || '';
     let eventDueDate = this.currentEvent.dueDate || '';
-    let Tasks = this.fb.array([]);
+    let Tasks = this.fb.array([], uniqueTaskName);
     if (this.editMode && this.currentEvent.tasks) {
       this.currentEvent['tasks'].map((task) => {
         Tasks.push(
           new FormGroup({
-            name: this.fb.control(task.name, [Validators.required]),
+            name: this.fb.control(task.name, [Validators.required], []),
             startDate: this.fb.control(new Date(task.startDate), [
               Validators.required,
             ]),
@@ -57,9 +62,17 @@ export class TaskFormComponent implements OnInit {
         );
       });
     }
-    this.eventForm = this.fb.group({
+    this.eventForm = new FormGroup({
       eventDetails: this.fb.group({
-        name: this.fb.control(eventName, [Validators.required]),
+        name: this.fb.control(eventName, {
+          validators: [Validators.required],
+          asyncValidators: [
+            this.eventValidators.eventNameUniqueness(
+              this.currentEvent?.id || ''
+            ),
+          ],
+          updateOn: 'blur',
+        }),
         dueDate: this.fb.control(new Date(eventDueDate), [Validators.required]),
       }),
       tasks: Tasks,
@@ -68,6 +81,7 @@ export class TaskFormComponent implements OnInit {
       this.addTask();
     }
   }
+
   getTasks(): FormArray {
     return this.eventForm.get('tasks') as FormArray;
   }
@@ -100,7 +114,6 @@ export class TaskFormComponent implements OnInit {
           this.snackBar.open('Event updated successfully', 'dismiss', {
             duration: 1000,
           });
-          // this.router.navigate(['/']);
         },
         (err) => {
           this.errorMsg = err;

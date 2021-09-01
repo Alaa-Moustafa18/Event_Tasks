@@ -12,8 +12,26 @@
       <div class="notification">
         <img src="../../assets/images/Icon - notifications.png" alt="tasks" />
       </div>
+
       <div class="profile-photo">
         <img src="../../assets/images/profile img.png" alt="tasks" />
+      </div>
+      <div class="langs">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="changeCurrentLang('ar')">
+            arabic
+          </button>
+          <button mat-menu-item (click)="changeCurrentLang('en')">
+            english
+          </button>
+        </mat-menu>
       </div>
     </div>
   </mat-toolbar>

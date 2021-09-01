@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { map } from 'rxjs/operators';
 import { Event } from '../models/event.model';
 import { EventService } from '../services/event.service';
@@ -13,7 +14,11 @@ export class TasksComponent implements OnInit {
   events: Event[] = [];
   errorMsg: string = '';
   showSpinner = false;
-  constructor(private eventService: EventService, private router: Router) {}
+  constructor(
+    private eventService: EventService,
+    private router: Router,
+    public translate: TranslateService
+  ) {}
   ngOnInit(): void {
     this.showSpinner = true;
     this.eventService
