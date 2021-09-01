@@ -26,10 +26,10 @@
         </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item (click)="changeCurrentLang('ar')">
-            arabic
+            {{ "ARABIC" | translate }}
           </button>
           <button mat-menu-item (click)="changeCurrentLang('en')">
-            english
+            {{ "ENGLISH" | translate }}
           </button>
         </mat-menu>
       </div>

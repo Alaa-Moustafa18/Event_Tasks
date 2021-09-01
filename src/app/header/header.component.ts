@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
-import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -21,7 +20,10 @@ export class HeaderComponent implements OnInit {
     localStorage.setItem('currentLanguage', lang);
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       document.documentElement.lang = event.lang;
-      if (event.lang == 'ar') document.documentElement.dir = 'rtl';
+
+      event.lang == 'ar'
+        ? (document.documentElement.dir = 'rtl')
+        : (document.documentElement.dir = 'ltr');
     });
   }
 }
