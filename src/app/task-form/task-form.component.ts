@@ -63,18 +63,15 @@ export class TaskFormComponent implements OnInit {
       });
     }
     this.eventForm = new FormGroup({
-      eventDetails: this.fb.group({
-        name: this.fb.control(eventName, {
-          validators: [Validators.required],
-          asyncValidators: [
-            this.eventValidators.eventNameUniqueness(
-              this.currentEvent?.id || ''
-            ),
-          ],
-          updateOn: 'blur',
-        }),
-        dueDate: this.fb.control(new Date(eventDueDate), [Validators.required]),
+      name: this.fb.control(eventName, {
+        validators: [Validators.required],
+        asyncValidators: [
+          this.eventValidators.eventNameUniqueness(this.currentEvent?.id || ''),
+        ],
+        updateOn: 'blur',
       }),
+      dueDate: this.fb.control(new Date(eventDueDate), [Validators.required]),
+
       tasks: Tasks,
     });
     if (!this.editMode) {
@@ -105,9 +102,8 @@ export class TaskFormComponent implements OnInit {
   }
 
   save() {
-    const eventDetails = this.eventForm.value.eventDetails;
-    let tasks = this.eventForm.value.tasks;
-    const event = { ...eventDetails, tasks };
+    const evenValue = this.eventForm.value;
+    const event = { ...evenValue };
     if (this.editMode) {
       this.eventService.updateEvent(this.currentEvent.id, event).subscribe(
         (res) => {
