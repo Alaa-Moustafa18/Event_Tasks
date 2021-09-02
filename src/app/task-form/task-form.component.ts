@@ -107,9 +107,13 @@ export class TaskFormComponent implements OnInit {
     if (this.editMode) {
       this.eventService.updateEvent(this.currentEvent.id, event).subscribe(
         (res) => {
-          this.snackBar.open('Event updated successfully', 'dismiss', {
-            duration: 1000,
-          });
+          this.snackBar.open(
+            this.translate.instant('EVENT_UPDATED_SUCCESSFULLY'),
+            'dismiss',
+            {
+              duration: 1000,
+            }
+          );
         },
         (err) => {
           this.errorMsg = err;
@@ -118,9 +122,13 @@ export class TaskFormComponent implements OnInit {
     } else {
       this.eventService.addEvent(event).subscribe(
         (res) => {
-          this.snackBar.open('Event added successfully', 'dismiss', {
-            duration: 1000,
-          });
+          this.snackBar.open(
+            this.translate.instant('EVENT_ADDED_SUCCESSFULLY'),
+            'dismiss',
+            {
+              duration: 1000,
+            }
+          );
         },
         (err) => {
           this.errorMsg = err;

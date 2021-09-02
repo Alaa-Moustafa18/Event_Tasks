@@ -18,23 +18,35 @@
 
 <ng-container *ngIf="events">
   <div class="row">
-    <div *ngFor="let event of events" class="col-md-4">
+    <div *ngFor="let event of events; let eventIndex = index" class="col-md-4">
       <div class="event-title">
         <h2>{{ event?.name }}</h2>
-        <img
-          src="../../assets/images/Icon feather-edit.png"
-          (click)="editEvent(event)"
-          [matTooltip]="'EDIT_TASK' | translate"
-          alt="edit"
-        />
+        <div class="event-actions">
+          <button
+            mat-button
+            type="button"
+            [matTooltip]="'EDIT_TASK' | translate"
+            (click)="editEvent(event)"
+          >
+            <mat-icon>edit_outline</mat-icon>
+          </button>
+          <button
+            mat-button
+            type="button"
+            [matTooltip]="'DELETE_TASK' | translate"
+            (click)="deleteEvent(eventIndex)"
+          >
+            <mat-icon>delete_outline</mat-icon>
+          </button>
+        </div>
       </div>
       <p class="tasks">{{ "Tasks" | translate }}</p>
       <div class="task-content" *ngFor="let task of event.tasks">
         <mat-card
           [ngClass]="{
-            'high-priority': task.priority === 'high',
-            'medium-priority': task.priority === 'medium',
-            'low-priority': task.priority === 'low'
+            'high-priority': task.priority === 'HIGH',
+            'medium-priority': task.priority === 'MEDIUM',
+            'low-priority': task.priority === 'LOW'
           }"
         >
           <mat-card-title>{{ task.name }}</mat-card-title>
@@ -55,7 +67,8 @@
                   'medium-priority': task.priority === 'medium',
                   'low-priority': task.priority === 'low'
                 }"
-                >{{ task.priority }}
+              >
+                {{ task.priority + "" | translate }}
               </span>
             </p>
           </mat-card-content>

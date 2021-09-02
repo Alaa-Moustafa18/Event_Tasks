@@ -159,11 +159,11 @@
                       formControlName="priority"
                       required
                     >
-                      <option value="high">{{ "HIGH" | translate }}</option>
-                      <option value="medium">
+                      <option value="HIGH">{{ "HIGH" | translate }}</option>
+                      <option value="MEDIUM">
                         {{ "MEDIUM" | translate }}
                       </option>
-                      <option value="low">{{ "LOW" | translate }}</option>
+                      <option value="LOW">{{ "LOW" | translate }}</option>
                     </select>
                     <mat-error
                       *ngIf="
@@ -207,8 +207,8 @@
             </div>
             <div class="save-btn">
               <button
-                mat-raised-button
                 [disabled]="eventForm.invalid"
+                mat-raised-button
                 (click)="save()"
                 color="primary"
               >

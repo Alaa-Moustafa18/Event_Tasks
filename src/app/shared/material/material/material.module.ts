@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const matrialComponents = [
   MatToolbarModule,
@@ -31,6 +32,7 @@ const matrialComponents = [
   MatProgressSpinnerModule,
   MatSnackBarModule,
   MatTooltipModule,
+  MatDialogModule,
 ];
 
 @NgModule({

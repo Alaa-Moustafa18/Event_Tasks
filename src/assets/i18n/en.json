@@ -19,10 +19,14 @@
   "LOW": "Low",
   "DELETE_TASK": " Delete this Task",
   "ADD_ANOTHER_TASK": "Add another task",
+  "OK": "Ok",
   "SAVE": "Save",
   "CANCEL": "Cancel",
   "REQIRED": "required",
   "VALID_END_DATE": "Please select a valid end date",
   "NAME_EXIST": "name Already Exist",
-  "ERROR_MSG": "an error occured"
+  "ERROR_MSG": "an error occured",
+  "EVENT_ADDED_SUCCESSFULLY": "Event added successfully",
+  "EVENT_UPDATED_SUCCESSFULLY": "Event updated successfully",
+  "DELETED_SUCCESSFULLY": "Event deleted successfully"
 }

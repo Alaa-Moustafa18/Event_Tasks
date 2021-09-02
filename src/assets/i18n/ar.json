@@ -19,10 +19,14 @@
   "LOW": "منخفضة",
   "DELETE_TASK": "حذف المهمة",
   "ADD_ANOTHER_TASK": "إضافة مهمة ",
+  "OK": "موافق",
   "SAVE": "حفظ",
   "CANCEL": "إالغاء",
   "REQIRED": "مطلوب",
   "VALID_END_DATE": "من فضلك اختر تاريخ مناسب",
   "NAME_EXIST": "هذا الاسم موجود بالفعل",
-  "ERROR_MSG": "حدث خطأ"
+  "ERROR_MSG": "حدث خطأ",
+  "EVENT_ADDED_SUCCESSFULLY": "تم إضافة الحدث بنجاح",
+  "EVENT_UPDATED_SUCCESSFULLY": "تم تعديل الحدث بنجاح",
+  "DELETED_SUCCESSFULLY": "تم حذف الحدث بنجاح"
 }
