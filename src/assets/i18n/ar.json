@@ -4,6 +4,8 @@
   "MYTASKS": "مهامي",
   "TASKS": "مهام",
   "ADD_NEW_EVENT": "إضافة حدث جديد",
+  "EDIT_EVENT": "تعديل الحدث",
+  "DELETE_EVENT": "حذف الحدث",
   "EDIT_TASK": "تعديل مهمة",
   "START_DATE": "تاريخ البداية",
   "END_DATE": "تاريخ النهاية",
@@ -29,5 +31,5 @@
   "EVENT_ADDED_SUCCESSFULLY": "تم إضافة الحدث بنجاح",
   "EVENT_UPDATED_SUCCESSFULLY": "تم تعديل الحدث بنجاح",
   "DELETED_SUCCESSFULLY": "تم حذف الحدث بنجاح",
-  "DELETE_CONFIRMATION": "هل أنت متأكد أنك تريد حذف هذا الحدث؟ "
+  "DELETE_CONFIRMATION": "هل انت متأكد أنك تريد حذف هذا الحدث؟ "
 }

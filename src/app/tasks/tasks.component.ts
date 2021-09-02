@@ -52,7 +52,7 @@ export class TasksComponent implements OnInit {
   }
 
   deleteEvent(eventIndex) {
-    let dialogRef = this.dialog.open(ConfirmationDialogComponent, {
+    this.dialog.open(ConfirmationDialogComponent, {
       data: {
         delete: () => {
           this.eventService
@@ -61,7 +61,7 @@ export class TasksComponent implements OnInit {
               this.snackBar.open(
                 this.translate.instant('DELETED_SUCCESSFULLY'),
                 'dismiss',
-                { duration: 1 }
+                { duration: 2000 }
               );
             });
         },

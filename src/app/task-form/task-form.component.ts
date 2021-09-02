@@ -111,7 +111,7 @@ export class TaskFormComponent implements OnInit {
             this.translate.instant('EVENT_UPDATED_SUCCESSFULLY'),
             'dismiss',
             {
-              duration: 1000,
+              duration: 2000,
             }
           );
         },
@@ -126,7 +126,7 @@ export class TaskFormComponent implements OnInit {
             this.translate.instant('EVENT_ADDED_SUCCESSFULLY'),
             'dismiss',
             {
-              duration: 1000,
+              duration: 2000,
             }
           );
         },
