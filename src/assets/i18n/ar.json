@@ -28,5 +28,6 @@
   "ERROR_MSG": "حدث خطأ",
   "EVENT_ADDED_SUCCESSFULLY": "تم إضافة الحدث بنجاح",
   "EVENT_UPDATED_SUCCESSFULLY": "تم تعديل الحدث بنجاح",
-  "DELETED_SUCCESSFULLY": "تم حذف الحدث بنجاح"
+  "DELETED_SUCCESSFULLY": "تم حذف الحدث بنجاح",
+  "DELETE_CONFIRMATION": "هل أنت متأكد أنك تريد حذف هذا الحدث؟ "
 }
