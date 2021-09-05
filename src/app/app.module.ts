@@ -22,7 +22,7 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     ConfirmationDialogComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
@@ -30,7 +30,7 @@ import { ConfirmationDialogComponent } from './shared/confirmation-dialog/confir
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
-      defaultLanguage: localStorage.getItem('currentLanguage') || 'en',
+      defaultLanguage: 'en',
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,

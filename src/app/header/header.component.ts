@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -8,16 +9,22 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 })
 export class HeaderComponent implements OnInit {
   currentLang = 'en';
-  constructor(public translate: TranslateService) {}
+  constructor(
+    public translate: TranslateService,
+    @Inject(PLATFORM_ID) private plateformID
+  ) {}
 
   ngOnInit(): void {
-    this.currentLang = localStorage.getItem('currentLanguage') || 'en';
-
-    if (this.currentLang == 'ar') document.documentElement.dir = 'rtl';
+    if (isPlatformBrowser(this.plateformID)) {
+      this.currentLang = localStorage.getItem('currentLanguage') || 'en';
+      if (this.currentLang == 'ar') document.documentElement.dir = 'rtl';
+    }
   }
   changeCurrentLang(lang: string) {
     this.translate.use(lang);
-    localStorage.setItem('currentLanguage', lang);
+    if (isPlatformBrowser(this.plateformID)) {
+      localStorage.setItem('currentLanguage', lang);
+    }
     this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
       document.documentElement.lang = event.lang;
 
