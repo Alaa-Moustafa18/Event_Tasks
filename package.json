@@ -6,7 +6,7 @@
   },
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node server.js",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -14,7 +14,7 @@
     "serve:ssr": "node dist/events/server/main.js",
     "build:ssr": "ng build && ng run events:server",
     "prerender": "ng run events:prerender",
-    "postinstall": "ng build --prod --aot"
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
